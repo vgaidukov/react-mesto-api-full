@@ -180,7 +180,7 @@ function App() {
     // АВТОРИЗАЦИЯ
 
     const onRegister = ({ password, email }) => {
-        console.log(password, email);
+        // console.log(password, email);
         setIsLoading(true);
         return mestoAuth
             .register(password, email)
