@@ -108,19 +108,18 @@ const login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign(
+      const tokenValue = jwt.sign(
         { _id: user._id },
         'very-secret-key',
         { expiresIn: '1w' },
       );
-      console.log(token);
       res
         // .cookie('jwt', token, {
         //   maxAge: 3600000,
         //   httpOnly: true,
         // })
         // .send(user.toObject());
-        .send(token);
+        .send({ token: tokenValue });
     })
     .catch(next);
 };
