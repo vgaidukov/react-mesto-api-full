@@ -235,6 +235,7 @@ function App() {
     };
 
     const auth = (token) => {
+        console.log(token);
         return mestoAuth.validateToken(token)
             .then((res) => {
                 if (res) {
@@ -247,6 +248,7 @@ function App() {
     }
 
     useEffect(() => {
+        console.log(1);
         const token = localStorage.getItem('token');
         if (token) {
             auth(token);
