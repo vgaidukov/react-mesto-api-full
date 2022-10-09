@@ -1,0 +1,6 @@
+.entrance-page {
+    display: flex;
+    flex-direction: column;
+    width: 358px;
+    min-height: 461px;
+}

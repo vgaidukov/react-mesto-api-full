@@ -1,0 +1,10 @@
+.popup__window_type_info-tooltip {
+    width: 430px;
+    min-height: 330px;
+    padding: 60px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}

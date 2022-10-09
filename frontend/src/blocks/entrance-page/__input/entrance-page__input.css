@@ -1,0 +1,16 @@
+.entrance-page__input {
+    width: 100%;
+
+    padding: 0;
+    background: none;
+    border: none;
+    border-bottom:  2px solid #CCCCCC;
+    
+    color: #CCCCCC;
+    font-size: 14px;
+    line-height: 27px;
+}
+
+.entrance-page__input::placeholder {
+    color: #CCCCCC;
+}
