@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const { Joi } = require('celebrate');
 Joi.objectId = require('joi-objectid')(Joi);
 
@@ -110,7 +112,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const tokenValue = jwt.sign(
         { _id: user._id },
-        'very-secret-key',
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '1w' },
       );
       res
