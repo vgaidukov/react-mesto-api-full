@@ -46,7 +46,7 @@ const createUser = (req, res, next) => {
       password: hash,
     }))
     .then((user) => {
-      res.send(user.toObject());
+      res.send({ data: user.toObject() });
     })
     .catch((err) => {
       next(setErrorType(err));

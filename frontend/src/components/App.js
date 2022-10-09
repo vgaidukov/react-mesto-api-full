@@ -164,9 +164,7 @@ function App() {
 
     // выгрузка новой карточки  в API и обновление карточек на странице
     function handleAddCard(newCardData) {
-        console.log(isLoading + ' before');
         setIsLoading(true);
-        console.log(isLoading + ' after');
         api
             .postNewCard(newCardData)
             .then((newCard) => {
@@ -180,7 +178,6 @@ function App() {
     // АВТОРИЗАЦИЯ
 
     const onRegister = ({ password, email }) => {
-        // console.log(password, email);
         setIsLoading(true);
         return mestoAuth
             .register(password, email)
@@ -194,7 +191,7 @@ function App() {
                     : (console.log(`Ошибка: ${err}`));
             })
             .finally(() => {
-                setIsInfoTooltipOpen(true)
+                setIsInfoTooltipOpen(true);
                 setIsLoading(false)
             });
 
@@ -240,7 +237,7 @@ function App() {
             .then((res) => {
                 if (res) {
                     setLoggedIn(true);
-                    setUserEmail(res.data.email);
+                    setUserEmail(res.email);
                     history.push('/');
                 }
             })

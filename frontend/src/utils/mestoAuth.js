@@ -22,7 +22,6 @@ export const authorize = (password, email) => {
     })
         .then(res => checkServerResponse(res))
         .then((data) => {
-            console.log(data);
             if (data.token) {
                 localStorage.setItem('token', data.token);
                 return data;
