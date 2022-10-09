@@ -113,14 +113,13 @@ const login = (req, res, next) => {
         'very-secret-key',
         { expiresIn: '1w' },
       );
-
       res
         // .cookie('jwt', token, {
         //   maxAge: 3600000,
         //   httpOnly: true,
         // })
-        .set('Authorization', `Bearer ${token}`)
-        .send(user.toObject());
+        // .send(user.toObject());
+        .send(token);
     })
     .catch(next);
 };

@@ -1,4 +1,5 @@
 const BASE_URL = 'https://api.vgaidukov.students.nomoredomains.icu';
+// const BASE_URL = 'https://auth.nomoreparties.co';
 
 export const register = (password, email) => {
     return fetch(`${BASE_URL}/signup`, {
@@ -21,6 +22,7 @@ export const authorize = (password, email) => {
     })
         .then(res => checkServerResponse(res))
         .then((data) => {
+            console.log(data);
             if (data.token) {
                 localStorage.setItem('token', data.token);
                 return data;
