@@ -113,6 +113,7 @@ const login = (req, res, next) => {
         'very-secret-key',
         { expiresIn: '1w' },
       );
+      console.log(token);
       res
         // .cookie('jwt', token, {
         //   maxAge: 3600000,
