@@ -37,7 +37,6 @@ const createUser = (req, res, next) => {
     email,
     password,
   } = req.body;
-  console.log(req.body);
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
       name,
@@ -116,10 +115,11 @@ const login = (req, res, next) => {
       );
 
       res
-        .cookie('jwt', token, {
-          maxAge: 3600000,
-          httpOnly: true,
-        })
+        // .cookie('jwt', token, {
+        //   maxAge: 3600000,
+        //   httpOnly: true,
+        // })
+        .set('Authorization', `Bearer ${token}`)
         .send(user.toObject());
     })
     .catch(next);
