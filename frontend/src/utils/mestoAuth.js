@@ -1,4 +1,4 @@
-const BASE_URL = 'https://auth.nomoreparties.co';
+const BASE_URL = 'https://api.vgaidukov.students.nomoredomains.icu';
 
 export const register = (password, email) => {
     return fetch(`${BASE_URL}/signup`, {
