@@ -116,11 +116,6 @@ const login = (req, res, next) => {
         { expiresIn: '1w' },
       );
       res
-        // .cookie('jwt', token, {
-        //   maxAge: 3600000,
-        //   httpOnly: true,
-        // })
-        // .send(user.toObject());
         .send({ token: tokenValue });
     })
     .catch(next);
