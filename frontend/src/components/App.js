@@ -65,6 +65,15 @@ function App() {
         }
     }
 
+    const handleError = (error) => {
+        setInfoTooltipMessage(messageFail);
+        closeAllPopups();
+        setIsInfoTooltipOpen(true);
+        (error === 400)
+            ? (console.log(`Ошибка 400 - некорректно заполнено одно из полей `))
+            : (console.log(`Ошибка: ${error}`));
+    }
+
     // УПРАВЛЕНИЕ КЛИКОМ НА КНОПКИ/КАРТОЧКУ
 
     function handleEditAvatarClick() {
@@ -114,7 +123,7 @@ function App() {
 
     // управление лайком в API и в карточке на странице
     function handleCardLike(card) {
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some(i => i === currentUser._id);
         api
             .changeLikeCardStatus(card._id, !isLiked)
             .then((newCard) => {
@@ -132,7 +141,7 @@ function App() {
                 setCards((cards) => cards.filter((c) => c._id !== card._id));
                 closeAllPopups();
             })
-            .catch(err => console.log(err))
+            .catch(err => handleError(err))
             .finally(() => setIsLoading(false));
     }
 
@@ -145,7 +154,7 @@ function App() {
                 setCurrentUser(updatedUserInfo);
                 closeAllPopups();
             })
-            .catch(err => console.log(err))
+            .catch(err => handleError(err))
             .finally(() => setIsLoading(false));
     }
 
@@ -158,7 +167,7 @@ function App() {
                 setCurrentUser(updatedAvatar);
                 closeAllPopups();
             })
-            .catch(err => console.log(err))
+            .catch(err => handleError(err))
             .finally(() => setIsLoading(false));
     }
 
@@ -168,10 +177,10 @@ function App() {
         api
             .postNewCard(newCardData)
             .then((newCard) => {
-                setCards([newCard, ...cards]);
+                setCards([...cards, newCard]);
                 closeAllPopups();
             })
-            .catch(err => console.log(err))
+            .catch(err => handleError(err))
             .finally(() => setIsLoading(false));
     }
 
@@ -232,7 +241,6 @@ function App() {
     };
 
     const auth = (token) => {
-        console.log(token);
         return mestoAuth.validateToken(token)
             .then((res) => {
                 if (res) {
@@ -245,7 +253,6 @@ function App() {
     }
 
     useEffect(() => {
-        console.log(1);
         const token = localStorage.getItem('token');
         if (token) {
             auth(token);

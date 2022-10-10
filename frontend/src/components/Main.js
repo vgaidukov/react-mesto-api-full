@@ -38,7 +38,7 @@ function Main({ onMount, onEditProfile, onAddPlace, onEditAvatar, cards, onCardC
             </section>
             <section>
                 <ul className="elements list">
-                    {cards.map((element) => (
+                    {cards.slice(0).reverse().map((element) => (
                         <Card
                             key={element._id}
                             card={element}

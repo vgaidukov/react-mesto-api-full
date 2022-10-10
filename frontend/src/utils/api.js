@@ -110,7 +110,7 @@ class Api {
         if (result.ok) {
             return result.json();
         }
-        return Promise.reject(`Ошибка: ${result.status}`);
+        return Promise.reject(result.status);
     }
 }
 

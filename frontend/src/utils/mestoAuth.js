@@ -30,7 +30,6 @@ export const authorize = (password, email) => {
 };
 
 export const validateToken = (token) => {
-    console.log(token);
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
