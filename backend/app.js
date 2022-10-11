@@ -18,6 +18,7 @@ const app = express();
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 // app.use(helmet());
+app.disable('x-powered-by');
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(corsHandler);
