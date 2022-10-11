@@ -44,8 +44,9 @@ app.post(
   celebrate({
     body: Joi.object().keys({
       email: Joi.string().required().email(),
-      password: Joi.string().required().min(8),
-    }).unknown(true),
+      password: Joi.string().required(),
+      // }).unknown(true),
+    }),
   }),
   login,
 );
@@ -55,11 +56,12 @@ app.post(
   celebrate({
     body: Joi.object().keys({
       email: Joi.string().required().email(),
-      password: Joi.string().required().min(8),
+      password: Joi.string().required(),
       name: Joi.string().min(2).max(30),
       about: Joi.string().min(2).max(30),
       avatar: Joi.string().regex(urlPattern),
-    }).unknown(true),
+      // }).unknown(true),
+    }),
   }),
   createUser,
 );

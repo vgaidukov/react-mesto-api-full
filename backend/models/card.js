@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const User = require('./user');
 
+const { urlPattern } = require('../utils/constants');
+
 const { Schema } = mongoose;
 
 const cardSchema = new Schema(
@@ -13,6 +15,12 @@ const cardSchema = new Schema(
     },
     link: {
       type: String,
+      validate: {
+        validator(value) {
+          return urlPattern.test(value);
+        },
+        message: 'URL is not valid',
+      },
       required: [true, 'Please feel in'],
     },
     owner: {
