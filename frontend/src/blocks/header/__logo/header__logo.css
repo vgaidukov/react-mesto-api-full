@@ -10,3 +10,9 @@
         margin-left: 27px;
     }
 }
+
+@media screen and (max-width: 540.98px) {
+    .header__logo {
+        margin-left: calc(50% - 37px);
+    }
+}
