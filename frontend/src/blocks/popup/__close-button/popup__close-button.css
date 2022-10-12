@@ -28,6 +28,13 @@
     transform: rotate(-45deg);
 }
 
+@media screen and (max-height: 500.98px) {
+    .popup__close-button {
+        top: 0;
+        right: calc(-32px - 16px);
+    }
+}
+
 @media screen and (max-width: 661.98px) {
     .popup__close-button {
         width: 20px;
